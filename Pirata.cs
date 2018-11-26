@@ -58,7 +58,7 @@ namespace TP_PiratasDelCaribe
         }
         public override void Herir()
         {
-            poderDePelea /= 2;
+            poderDePelea = poderDePelea/2;
         }
     }
 

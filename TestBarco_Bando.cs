@@ -21,24 +21,34 @@ namespace TestPiratasDelCaribe
         static ArmadaInglesa bando_inglesa = new ArmadaInglesa();
         static UnionPirata bando_pirata = new UnionPirata();
         static HolandesHerrante bando_holandes = new HolandesHerrante();
-        Barco ingles = new Barco(100,50,10,tripulantes1,bando_inglesa);
+        Barco ingles = new Barco(300,50,10,tripulantes1,bando_inglesa);
         Barco pirata = new Barco(80,40,20,tripulantes2,bando_pirata);
         Barco holandes = new Barco(120, 30, 50, tripulantes3, bando_holandes);
-        [TestMethod]
-        public void TestBonus()
-        {
-            Assert.AreEqual(13,ingles.Municiones());
-            Assert.AreEqual(100, pirata.PoderDeFuego());
-            Assert.AreEqual(2, holandes.Tripulacion().Count);
-        }
+
         [TestMethod]
         public void TestLucha()
         {
             ingles.EnfrentarCon(holandes);
-            Assert.AreEqual(3, ingles.Tripulacion().Count,"fallo 1");
+            Assert.AreEqual(4, ingles.Tripulacion().Count,"fallo 1");
             Assert.AreEqual(0, holandes.Tripulacion().Count,"fallo 2");
-            Assert.AreEqual(5, barbossa.PoderDePelea(), "fallo 3");
             Assert.IsTrue(holandes.ValoresEnCero(), "fallo 4");
+        }
+
+        [TestMethod]
+        public void TestBonus()
+        {
+            Assert.AreEqual(13, ingles.Municiones());
+            Assert.AreEqual(100, pirata.PoderDeFuego());
+            Assert.AreEqual(2, holandes.Tripulacion().Count);
+        }
+
+        [TestMethod]
+        public void TestCanion()
+        {
+            pirata.DispararA(ingles,5);
+            Assert.AreEqual(15, pirata.Municiones());
+            Assert.AreEqual(50,ingles.Resistencia());
+            Assert.AreEqual(2, ingles.Tripulacion().Count);
         }
     }
 }

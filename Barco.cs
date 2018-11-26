@@ -25,6 +25,8 @@ namespace TP_PiratasDelCaribe
             bando.Bonus(this);
         }
 
+        public int Resistencia() { return resistencia; }
+
         public int Municiones() { return municiones; }
 
         public int PoderDeFuego() { return poderDeFuego; }
